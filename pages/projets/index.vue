@@ -37,6 +37,11 @@
 </template>
 
 <script setup>
+
+useHead({
+  title: 'Projets – Julien Henry',
+})
+
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { useRoute } from 'vue-router'
 

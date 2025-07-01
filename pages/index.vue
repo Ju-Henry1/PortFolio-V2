@@ -8,3 +8,10 @@
     <Footer />
 
 </template>
+
+<script setup>
+useHead({
+  title: 'Accueil – Julien Henry',
+})
+
+</script>

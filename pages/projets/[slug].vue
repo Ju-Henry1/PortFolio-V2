@@ -48,6 +48,16 @@
 </template>
 
 <script setup>
+
+const route = useRoute()
+const project = computed(() =>
+  projects.find(p => p.slug === route.params.slug)
+)
+
+useHead({
+  title: 'Projets – Julien Henry',
+})
+
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
@@ -136,10 +146,6 @@ const projects = [
   }
 ]
 
-const route = useRoute()
-const project = computed(() =>
-  projects.find(p => p.slug === route.params.slug)
-)
 </script>
 
 <style scoped>

@@ -43,7 +43,7 @@
       </div>
     </div>
   </section>
-
+  <br />
   <Footer />
 </template>
 
@@ -129,3 +129,10 @@ h1{
   }
 }
 </style>
+
+<script setup>
+useHead({
+  title: 'Contact – Julien Henry',
+})
+
+</script>
