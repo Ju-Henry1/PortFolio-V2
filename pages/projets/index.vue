@@ -105,7 +105,7 @@ const currentPath = ref(route.path)
 
 
 <style scoped>
-/* Page wrapper */
+/* ==== Global Wrapper ==== */
 .page-wrapper {
   display: flex;
   flex-direction: column;
@@ -114,21 +114,24 @@ const currentPath = ref(route.path)
   padding-bottom: 40px;
   background-color: #f3f8f3;
   min-height: 100vh;
+  box-sizing: border-box;
 }
 
-/* Slider + dots ensemble */
+/* ==== Bloc contenant image + pastilles ==== */
 .slider-block {
   display: flex;
   align-items: center;
-  gap: 24px; /* espace entre image et dots */
+  justify-content: center;
+  gap: 24px; /* espace entre l’image et les pastilles */
   width: 90%;
   max-width: 860px;
+  flex-wrap: wrap; /* pour éviter tout débordement */
 }
 
-/* Slider (image) */
+/* ==== Lien contenant l’image (slider) ==== */
 .slider {
-  position: relative;
-  flex: 1 1 0;
+  width: 100%;
+  max-width: 700px;
   aspect-ratio: 16 / 10;
   overflow: hidden;
   background: #eef8ee;
@@ -137,15 +140,17 @@ const currentPath = ref(route.path)
   display: block;
 }
 
+/* ==== Image du projet ==== */
 .slide-image {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  display: block;
   background-color: white;
+  display: block;
+  max-height: 100%;
 }
 
-/* Fade animation */
+/* ==== Animation de fondu entre images ==== */
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 1s ease;
@@ -155,33 +160,36 @@ const currentPath = ref(route.path)
   opacity: 0;
 }
 
-/* Dots */
+/* ==== Liste des pastilles (dots) ==== */
 .dots {
   list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
+/* ==== Style des pastilles ==== */
 .dot {
   width: 14px;
   height: 14px;
   border-radius: 50%;
   border: 2px solid #0b3320;
-  background: #ffffff;
+  background: #fff;
   cursor: pointer;
   transition: background 0.3s;
 }
+
 .dot:hover {
   background: #cfe3cf;
 }
+
 .dot.active {
   background: #0b3320;
 }
 
-/* Titre du projet */
+/* ==== Titre sous le slider ==== */
 .project-title {
   margin-top: 28px;
   font-size: 26px;
@@ -190,14 +198,20 @@ const currentPath = ref(route.path)
   text-align: center;
 }
 
-/* Responsive : dots en bas pour très petits écrans */
-@media (max-width: 640px) {
+/* ==== Responsive mobile/tablette ==== */
+@media (max-width: 768px) {
+  /* Les éléments sont empilés verticalement */
   .slider-block {
     flex-direction: column;
+    gap: 20px;
   }
+
+  /* Les pastilles passent sous l’image */
   .dots {
     flex-direction: row;
-    gap: 16px;
+    justify-content: center;
+    gap: 14px;
   }
 }
+
 </style>

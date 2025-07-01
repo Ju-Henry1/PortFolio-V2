@@ -145,14 +145,16 @@ const project = computed(() =>
 <style scoped>
 .project-detail {
   display: flex;
-  height: 100vh;
   background: #edf7ed;
+  min-height: 100vh;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 
+/* === Colonne gauche : texte === */
 .left-panel {
   flex: 0 0 50%;
   padding: 3rem;
-  overflow: hidden;
   position: sticky;
   top: 0;
   height: 100vh;
@@ -164,6 +166,7 @@ const project = computed(() =>
   box-sizing: border-box;
 }
 
+/* === Colonne droite : images === */
 .right-panel {
   flex: 1;
   overflow-y: auto;
@@ -174,6 +177,7 @@ const project = computed(() =>
   gap: 2rem;
 }
 
+/* === Titres et paragraphes === */
 .title {
   font-size: 24px;
   font-weight: 800;
@@ -204,6 +208,7 @@ const project = computed(() =>
   margin-bottom: 0.3rem;
 }
 
+/* === Liste des outils === */
 .tech-list {
   display: flex;
   flex-wrap: wrap;
@@ -222,6 +227,7 @@ const project = computed(() =>
   border: 1px solid #ccc;
 }
 
+/* === Lien vers le site === */
 .see-site {
   display: inline-block;
   margin-top: 1.5rem;
@@ -237,6 +243,7 @@ const project = computed(() =>
   background: #145a36;
 }
 
+/* === Images === */
 .image-scroll {
   display: flex;
   flex-direction: column;
@@ -250,8 +257,33 @@ const project = computed(() =>
   object-fit: contain;
 }
 
+/* === Fallback si projet introuvable === */
 .not-found {
   padding: 4rem;
   text-align: center;
 }
+
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+  .project-detail {
+    flex-direction: column;
+  }
+
+  .left-panel {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 2rem 1.5rem;
+  }
+
+  .right-panel {
+    width: 100%;
+    padding: 2rem 1.5rem;
+  }
+
+  .project-image {
+    max-width: 100%;
+  }
+}
+
 </style>
